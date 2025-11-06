@@ -16,5 +16,11 @@ class Client extends Model
         'payment_amount',
         'subscription_date',
         'next_payment_date',
+        'payment_status',
+    ];
+
+    protected $casts = [
+        'subscription_date' => 'date',
+        'next_payment_date' => 'date',
     ];
 }
