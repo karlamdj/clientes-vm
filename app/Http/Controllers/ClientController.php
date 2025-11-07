@@ -100,24 +100,42 @@ class ClientController extends Controller
      */
     public function confirmPayment(Client $client)
     {
-        // 1. Obtenemos la fecha del próximo pago actual
-        $currentPaymentDate = Carbon::parse($client->next_payment_date);
+        $paymentDateToRecord = Carbon::parse($client->next_payment_date);
+        $amountToRecord = $client->payment_amount;
 
-        // 2. Calculamos la NUEVA fecha de próximo pago (sumándole un mes)
-        //    (Usamos 'addMonthNoOverflow' por si pagan el 31 y el prox mes tiene 30)
-        $newNextPaymentDate = $currentPaymentDate->addMonthNoOverflow(); // <-- AQUÍ SE CREA LA VARIABLE
-
-        // 3. Actualizamos al cliente:
-        //    - Ponemos el estado en 'pagado'
-        //    - Establecemos la fecha del *próximo* ciclo
-        $client->update([
-            'payment_status' => 'pagado',
-            'next_payment_date' => $newNextPaymentDate // <-- AQUÍ SE USA
+        $client->payments()->create([
+            'amount' => $amountToRecord,
+            'payment_date' => $paymentDateToRecord
         ]);
 
-        // 4. Redirigimos CON el mensaje de éxito
-        return redirect()->route('clients.index')
-            ->with('success', '¡Pago confirmado exitosamente!');
+        $newNextPaymentDate = $paymentDateToRecord->addMonthNoOverflow();
+
+        $client->update([
+            'payment_status' => 'pagado',
+            'next_payment_date' => $newNextPaymentDate
+        ]);
+
+        return redirect()->back() // Usamos redirect()->back() para que funcione desde Home o Clientes
+            ->with('success', '¡Pago confirmado!');
     }
 
+    public function recordCourtesy(Client $client)
+    {
+        $paymentDateToRecord = Carbon::parse($client->next_payment_date);
+
+         $client->payments()->create([
+            'amount' => 0, // <-- ¡AQUÍ ESTÁ LA MAGIA!
+            'payment_date' => $paymentDateToRecord
+        ]);
+
+            $newNextPaymentDate = $paymentDateToRecord->addMonthNoOverflow();
+
+         $client->update([
+            'payment_status' => 'pagado', // Lo marcamos como 'pagado' 
+            'next_payment_date' => $newNextPaymentDate
+        ]);
+
+        return redirect()->back()
+            ->with('success', '¡Mes de cortesía registrado!');
+    }
 }

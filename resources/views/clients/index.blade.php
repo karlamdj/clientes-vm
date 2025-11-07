@@ -37,21 +37,25 @@
                   <span class="badge bg-label-warning me-1">Pendiente</span>
                 @endif
               </td>
-              
+              <!-- Acciones -->
               <td>
-                <a href="{{ route('clients.edit', $client) }}" class="btn btn-sm btn-info">Editar</a>
+              <a href="{{ route('clients.edit', $client) }}" class="btn btn-sm btn-info">Editar</a>
 
-                <form action="{{ route('clients.destroy', $client) }}" method="POST" style="display:inline;">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Borrar</button>
-                </form>
+              <form action="{{ route('clients.destroy', $client) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro?')">Borrar</button>
+              </form>
 
-                  <form action="{{ route('clients.confirmPayment', $client) }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn btn-sm btn-success">Confirmar Pago</button>
-                  </form>
-           
+              <form action="{{ route('clients.confirmPayment', $client) }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-success">Confirmar Pago</button>
+              </form>
+
+              <form action="{{ route('clients.recordCourtesy', $client) }}" method="POST" style="display:inline;">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-secondary" onclick="return confirm('¿Seguro que quieres registrar un mes de cortesía (sin pago)?')">Cortesía</button>
+              </form>
               </td>
             </tr>
           @empty

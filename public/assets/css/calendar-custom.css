@@ -1,0 +1,109 @@
+/* Estilos personalizados para el Calendario de Pagos */
+
+#calendar {
+  min-height: 500px;
+  max-height: 650px;
+  height: auto;
+  width: 100%;
+  max-width: 600px; /* Limitar el ancho máximo del calendario */
+}
+
+/* Ajustar tamaño de las celdas del calendario */
+.fc-daygrid-day {
+  min-height: 80px;
+  max-height: 100px;
+  min-width: 70px; /* Celdas más compactas en ancho */
+}
+
+/* Ajustar el tamaño de fuente del calendario */
+.fc {
+  font-size: 0.9rem;
+}
+
+/* Estilo de los eventos en el calendario */
+.fc-event {
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.fc-event:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+
+/* Título del calendario */
+.fc-toolbar-title {
+  font-size: 1.3rem !important;
+  font-weight: 600;
+}
+
+/* Botones del calendario */
+.fc-button {
+  padding: 0.4rem 0.8rem !important;
+  font-size: 0.85rem !important;
+}
+
+/* Encabezados de días de la semana */
+.fc-col-header-cell {
+  padding: 8px 0;
+  font-weight: 600;
+  background-color: #f8f9fa;
+}
+
+/* Ajustar el contenedor de la tarjeta del calendario */
+.calendar-card-container {
+  max-width: 600px; /* Mismo ancho máximo que el calendario */
+  margin: 0 auto 0 0; /* Alinear a la izquierda */
+}
+
+/* Hacer el calendario más compacto */
+.fc-daygrid-event-harness {
+  margin-top: 2px;
+}
+
+/* Números de los días */
+.fc-daygrid-day-number {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+}
+
+/* Vista de lista más compacta */
+.fc-list-event {
+  cursor: pointer;
+}
+
+.fc-list-event:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive: ajustar en pantallas pequeñas */
+@media (max-width: 768px) {
+  #calendar {
+    min-height: 400px;
+    max-height: 500px;
+  }
+  
+  .fc-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .fc-toolbar-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .fc-daygrid-day {
+    min-height: 60px;
+  }
+}
+
+/* Optimización para pantallas grandes */
+@media (min-width: 1400px) {
+  #calendar {
+    max-height: 700px;
+  }
+}
