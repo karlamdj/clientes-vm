@@ -11,15 +11,19 @@
   <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
     <!-- Search -->
     <div class="navbar-nav align-items-center">
-      <div class="nav-item d-flex align-items-center">
-        <i class="bx bx-search fs-4 lh-0"></i>
-        <input
-          type="text"
-          class="form-control border-0 shadow-none"
-          placeholder="Search..."
-          aria-label="Search..."
-        />
-      </div>
+      <form action="{{ route('search') }}" method="GET" class="d-flex align-items-center">
+        <div class="nav-item d-flex align-items-center">
+          <i class="bx bx-search fs-4 lh-0"></i>
+          <input
+            type="text"
+            name="q"
+            class="form-control border-0 shadow-none"
+            placeholder="Buscar clientes, gastos..."
+            aria-label="Search..."
+            required
+          />
+        </div>
+      </form>
     </div>
     <!-- /Search -->
 
@@ -42,7 +46,8 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-semibold d-block">Admin</span>
+                  <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                  <small class="text-muted">{{ Auth::user()->email }}</small>
                 </div>
               </div>
             </a>
@@ -51,10 +56,13 @@
             <div class="dropdown-divider"></div>
           </li>
           <li>
-            <a class="dropdown-item" href="auth-login-basic.html">
-              <i class="bx bx-power-off me-2"></i>
-              <span class="align-middle">Log Out</span>
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="dropdown-item">
+                <i class="bx bx-power-off me-2"></i>
+                <span class="align-middle">Cerrar Sesión</span>
+              </button>
+            </form>
           </li>
         </ul>
       </li>

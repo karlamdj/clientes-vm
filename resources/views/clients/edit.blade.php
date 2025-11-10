@@ -82,9 +82,14 @@
         />
       </div>
       
-      <button type="submit" class="btn btn-primary">Actualizar Cliente</button>
-      
-      <a href="{{ route('clients.index') }}" class="btn btn-secondary">Cancelar</a>
+      <div class="d-flex justify-content-between flex-wrap gap-2">
+        <a href="{{ route('clients.index') }}" class="btn btn-secondary flex-fill flex-sm-grow-0">
+          <i class="bx bx-arrow-back me-1"></i> Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary flex-fill flex-sm-grow-0">
+          <i class="bx bx-save me-1"></i> Actualizar Cliente
+        </button>
+      </div>
       
     </form>
   </div>

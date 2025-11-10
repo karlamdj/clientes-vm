@@ -83,21 +83,63 @@
 /* Responsive: ajustar en pantallas pequeñas */
 @media (max-width: 768px) {
   #calendar {
-    min-height: 400px;
-    max-height: 500px;
+    min-height: 350px;
+    max-height: 450px;
   }
   
   .fc-toolbar {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    padding: 0.5rem;
   }
   
   .fc-toolbar-title {
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .fc-button {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.75rem !important;
   }
   
   .fc-daygrid-day {
-    min-height: 60px;
+    min-height: 50px;
+    min-width: 40px;
+  }
+  
+  .fc-daygrid-day-number {
+    font-size: 0.75rem;
+    padding: 2px 4px;
+  }
+  
+  .fc-event {
+    font-size: 0.65rem;
+    padding: 1px 2px;
+  }
+  
+  .fc-col-header-cell {
+    padding: 4px 0;
+    font-size: 0.75rem;
+  }
+  
+  .calendar-card-container {
+    max-width: 100%;
+  }
+  
+  /* Ocultar texto de botones en móvil, mostrar solo iconos */
+  .fc-button-group .fc-button {
+    min-width: 40px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+  #calendar {
+    max-width: 100%;
+  }
+  
+  .calendar-card-container {
+    max-width: 100%;
   }
 }
 

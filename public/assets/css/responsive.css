@@ -1,0 +1,416 @@
+/* ========================================
+   Responsive Styles for Mobile Devices
+   ======================================== */
+
+/* Asegurar consistencia de botones en tablas */
+table .btn-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+table a.btn-sm,
+table button.btn-sm {
+  min-height: 30px;
+}
+
+/* General Mobile Optimizations */
+@media (max-width: 767.98px) {
+  /* Reduce padding on mobile */
+  .container-xxl.container-p-y {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  /* Card adjustments */
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  /* Title adjustments */
+  h4.fw-bold {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  /* Button adjustments */
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  /* Botones pequeños aún más compactos en móvil */
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  /* Botones en tablas extra compactos */
+  table .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    min-width: auto;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+
+  /* Asegurar que enlaces con clase btn tengan mismo tamaño que botones */
+  table a.btn-sm {
+    display: inline-block;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+
+  /* Reducir espacio entre botones en acciones */
+  td form {
+    display: inline-block;
+    margin: 0 1px;
+  }
+
+  td .btn-sm + .btn-sm,
+  td .btn-sm + form,
+  td form + .btn-sm {
+    margin-left: 2px;
+  }
+
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+
+  /* Form adjustments */
+  .form-label {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .form-control,
+  .form-select {
+    font-size: 0.875rem;
+  }
+
+  /* Action buttons in tables */
+  .dropdown-toggle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Table Responsive Improvements */
+@media (max-width: 767.98px) {
+  /* Hide less important columns on mobile */
+  .table .hide-mobile {
+    display: none !important;
+  }
+
+  /* Make table text smaller */
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .table td,
+  .table th {
+    padding: 0.5rem 0.25rem;
+    vertical-align: middle;
+  }
+
+  /* Stack table for very small screens - Card Style */
+  .table-mobile-card {
+    border: 0;
+  }
+
+  .table-mobile-card thead {
+    display: none;
+  }
+
+  .table-mobile-card tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #d9dee3;
+    border-radius: 0.375rem;
+    background: #fff;
+    padding: 0.75rem;
+  }
+
+  .table-mobile-card tbody td {
+    display: block;
+    text-align: left !important;
+    padding: 0.5rem 0;
+    border: 0;
+    position: relative;
+    padding-left: 45%;
+  }
+
+  .table-mobile-card tbody td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 40%;
+    padding-left: 0.5rem;
+    font-weight: 600;
+    color: #697a8d;
+  }
+
+  .table-mobile-card tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Actions column styling */
+  .table-mobile-card tbody td.actions-cell {
+    padding-left: 0;
+    text-align: center !important;
+    padding-top: 1rem;
+    border-top: 1px solid #d9dee3;
+    margin-top: 0.5rem;
+  }
+
+  .table-mobile-card tbody td.actions-cell:before {
+    display: none;
+  }
+}
+
+/* Header and Navigation Mobile */
+@media (max-width: 991.98px) {
+  /* Navbar adjustments */
+  .layout-navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .layout-navbar .navbar-nav-right {
+    width: 100%;
+  }
+
+  /* Search bar on mobile */
+  .layout-navbar .nav-item.d-flex.align-items-center {
+    width: 100%;
+  }
+
+  .layout-navbar input.form-control {
+    width: 100%;
+    font-size: 0.875rem;
+  }
+
+  /* User dropdown */
+  .navbar-dropdown .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+}
+
+/* Sidebar Mobile */
+@media (max-width: 1199.98px) {
+  .layout-menu {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  .layout-menu.show {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Dashboard Cards Mobile */
+@media (max-width: 767.98px) {
+  /* Make cards stack vertically */
+  .row > [class*='col-'] {
+    margin-bottom: 1rem;
+  }
+
+  /* Calendar on mobile */
+  .fc {
+    font-size: 0.75rem;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1rem !important;
+  }
+
+  .fc-button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .fc-daygrid-day-number {
+    font-size: 0.75rem;
+  }
+
+  /* Charts on mobile */
+  #chart-container {
+    height: 250px !important;
+  }
+}
+
+/* Modal Mobile Adjustments */
+@media (max-width: 767.98px) {
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-content {
+    border-radius: 0.375rem;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+}
+
+/* Form Mobile Improvements */
+@media (max-width: 767.98px) {
+  /* Stack form buttons */
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .d-flex.justify-content-between .btn {
+    width: 100%;
+  }
+
+  /* Make form groups full width */
+  .row .col-md-6,
+  .row .col-md-4,
+  .row .col-md-3 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Alert Messages Mobile */
+@media (max-width: 767.98px) {
+  .alert {
+    font-size: 0.875rem;
+    padding: 0.75rem;
+  }
+
+  .alert .btn-close {
+    padding: 0.5rem;
+  }
+}
+
+/* Badge and Status Mobile */
+@media (max-width: 767.98px) {
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Utility Classes for Mobile */
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 767.98px) {
+  .mobile-only {
+    display: block !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Text alignment mobile */
+  .text-mobile-center {
+    text-align: center !important;
+  }
+
+  .text-mobile-left {
+    text-align: left !important;
+  }
+
+  /* Spacing mobile */
+  .mb-mobile-3 {
+    margin-bottom: 1rem !important;
+  }
+
+  .mt-mobile-3 {
+    margin-top: 1rem !important;
+  }
+}
+
+/* Touch-friendly buttons */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .dropdown-item,
+  .nav-link,
+  .menu-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .form-check-input,
+  .form-control,
+  .form-select {
+    min-height: 44px;
+  }
+}
+
+/* Prevent text selection on multiple taps */
+@media (max-width: 767.98px) {
+  .btn,
+  .menu-link,
+  .dropdown-toggle {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Loading states on mobile */
+@media (max-width: 767.98px) {
+  .spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Improve scrolling on mobile */
+@media (max-width: 767.98px) {
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .overflow-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Logo adjustments for mobile */
+@media (max-width: 767.98px) {
+  .app-brand img {
+    max-width: 140px !important;
+    max-height: 40px !important;
+  }
+}
+
+/* Stats cards on mobile */
+@media (max-width: 767.98px) {
+  .card-body .d-flex {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .card-body .avatar {
+    margin-bottom: 0.5rem;
+  }
+}

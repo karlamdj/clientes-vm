@@ -119,12 +119,34 @@ class ClientController extends Controller
             ->with('success', '¡Pago confirmado!');
     }
 
+    public function getPaymentHistory(Client $client)
+{
+    // 1. Cargamos los pagos, ordenados del más nuevo al más viejo
+    $payments = $client->payments()->orderBy('payment_date', 'desc')->get();
+
+    // 2. Formateamos los datos para que JS los use fácilmente
+    $formattedPayments = $payments->map(function($payment) {
+        return [
+            'date' => $payment->payment_date->format('d/m/Y'),
+            'amount_formatted' => $payment->amount == 0 
+                                  ? '<span class="badge bg-label-info">Cortesía</span>' 
+                                  : '$' . number_format($payment->amount, 2),
+            'registered' => $payment->created_at->format('d/m/Y h:ia')
+        ];
+    });
+
+    // 3. Devolvemos los datos del cliente Y sus pagos
+    return response()->json([
+        'payments' => $formattedPayments
+    ]);
+}
+
     public function recordCourtesy(Client $client)
     {
         $paymentDateToRecord = Carbon::parse($client->next_payment_date);
 
          $client->payments()->create([
-            'amount' => 0, // <-- ¡AQUÍ ESTÁ LA MAGIA!
+            'amount' => 0, // 
             'payment_date' => $paymentDateToRecord
         ]);
 

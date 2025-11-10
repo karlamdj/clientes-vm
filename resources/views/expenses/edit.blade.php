@@ -22,8 +22,14 @@
         <input type="number" class="form-control" id="payment_day" name="payment_day" min="1" max="31" value="{{ $expense->payment_day }}" required />
       </div>
 
-      <button type="submit" class="btn btn-primary">Actualizar Gasto</button>
-      <a href="{{ route('expenses.index') }}" class="btn btn-secondary">Cancelar</a>
+      <div class="d-flex justify-content-between flex-wrap gap-2">
+        <a href="{{ route('expenses.index') }}" class="btn btn-secondary flex-fill flex-sm-grow-0">
+          <i class="bx bx-arrow-back me-1"></i> Cancelar
+        </a>
+        <button type="submit" class="btn btn-primary flex-fill flex-sm-grow-0">
+          <i class="bx bx-save me-1"></i> Actualizar Gasto
+        </button>
+      </div>
 
     </form>
   </div>
