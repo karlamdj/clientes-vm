@@ -5,7 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController; 
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ExpenseController;
-
+use App\Http\Controllers\PaymentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,6 @@ use App\Http\Controllers\ExpenseController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 Route::get('/historial', [HistoryController::class, 'index'])->name('history.index');
-
 Route::post('clients/{client}/record-courtesy', [ClientController::class, 'recordCourtesy'])
       ->name('clients.recordCourtesy');
 
@@ -24,3 +23,7 @@ Route::post('clients/{client}/confirm-payment', [ClientController::class, 'confi
 Route::resource('clients', ClientController::class);
 
 Route::resource('expenses', ExpenseController::class);
+
+Route::get('/pagos', [PaymentController::class, 'index'])->name('payments.index');
+Route::post('/pagos/{expense}/confirm', [PaymentController::class, 'confirmPayment'])
+      ->name('payments.confirm');

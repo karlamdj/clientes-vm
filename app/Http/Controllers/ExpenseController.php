@@ -76,15 +76,40 @@ class ExpenseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+       return view('expenses.edit', [
+        'expense' => $expense
+    ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Expense $expense)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'amount' => 'required|numeric',
+            'payment_day' => 'required|integer|min:1|max:31',
+        ]);
+        if ($data['payment_day'] != $expense->payment_day) {
+
+        $today = Carbon::today();
+        $paymentDay = $data['payment_day'];
+        $dueDateThisMonth = Carbon::createFromDate($today->year, $today->month, $paymentDay);
+
+        if ($today->day > $paymentDay) {
+            $data['next_due_date'] = $dueDateThisMonth->addMonthNoOverflow();
+        } else {
+            $data['next_due_date'] = $dueDateThisMonth;
+        }
+        
+        $data['status'] = 'pendiente'; 
+    }
+
+    $expense->update($data);
+
+    return redirect()->route('expenses.index');
     }
 
     /**
@@ -92,6 +117,8 @@ class ExpenseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $expense = Expense::findOrFail($id);
+        $expense->delete();
+        return redirect()->route('expenses.index');
     }
 }

@@ -81,7 +81,7 @@
       </a>
 </li>
 <li class="menu-item">
-        <a href="{{ route('history.index') }}" class="menu-link">
+        <a href="{{ route('payments.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-dollar"></i>
         <div data-i18n="Analytics">Pagos</div>
       </a>

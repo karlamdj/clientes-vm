@@ -30,4 +30,9 @@ class Expense extends Model
     protected $casts = [
         'next_due_date' => 'date',
     ];
+
+    public function payments()
+{
+    return $this->hasMany(ExpensePayment::class);
+}
 }
