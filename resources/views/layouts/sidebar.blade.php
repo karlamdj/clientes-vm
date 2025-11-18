@@ -30,7 +30,7 @@
 <li class="menu-item {{ request()->routeIs('payments.*') ? 'active' : '' }}">
         <a href="{{ route('payments.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-dollar"></i>
-        <div data-i18n="Analytics">Pagos</div>
+        <div data-i18n="Analytics">Gastos</div>
       </a>
 </li>
     <!-- Layouts -->
@@ -55,8 +55,8 @@
         <div data-i18n="Users">Usuarios</div>
       </a>
     </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link">
+    <li class="menu-item {{ request()->routeIs('settings.*') ? 'active' : '' }}">
+      <a href="{{ route('settings.templates.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-bell"></i>
         <div data-i18n="Misc">Recordatorios</div>
       </a>
