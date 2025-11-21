@@ -104,6 +104,16 @@
                         </span>
                         <span class="text-success fw-semibold">${{ number_format($totalIngresos, 2) }}</span>
                     </div>
+                    <div class="ms-4 mb-2">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <small class="text-muted">└ Pagos de clientes</small>
+                            <small class="text-muted">${{ number_format($totalIngresosPagos, 2) }}</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">└ Ingresos extras</small>
+                            <small class="text-muted">${{ number_format($totalIngresosExtras, 2) }}</small>
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span class="d-flex align-items-center">
                             <span class="badge badge-dot bg-danger me-2"></span>

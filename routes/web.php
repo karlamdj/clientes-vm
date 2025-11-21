@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageTemplateController;
+use App\Http\Controllers\ExtraIncomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,11 +40,15 @@ Route::middleware('auth')->group(function () {
       Route::resource('users', UserController::class);
 
       // --- Rutas de Plantillas ---
-// Asegúrate de que ambas rutas usen el nombre completo de la clase
       Route::get('/config/message-templates', [MessageTemplateController::class, 'index'])
             ->name('settings.templates.index');
       Route::put('/config/message-templates', [MessageTemplateController::class, 'update'])
             ->name('settings.templates.update');
+
+      // Ruta para Extras
+      Route::get('/extras', [ExtraIncomeController::class, 'index'])->name('extras.index');
+      Route::post('/extras', [ExtraIncomeController::class, 'store'])->name('extras.store');
+      Route::delete('/extras/{extra}', [ExtraIncomeController::class, 'destroy'])->name('extras.destroy');
 });
 
 // Authentication Routes
