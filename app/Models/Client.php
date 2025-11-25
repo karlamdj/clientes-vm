@@ -29,4 +29,16 @@ class Client extends Model
         // todos los registros donde 'client_id' sea igual al 'id' de este cliente."
         return $this->hasMany(Payment::class);
     }
+
+    public function getServiceDisplayNameAttribute()
+{
+    switch ($this->service_type) {
+        case 'vm_eats':
+            return 'VM Eats';
+        case 'vm_tech':
+            return 'VM Technologies';
+        default:
+            return ucfirst(str_replace('_', ' ', $this->service_type)); // Capitaliza y reemplaza guiones
+    }
+}
 }

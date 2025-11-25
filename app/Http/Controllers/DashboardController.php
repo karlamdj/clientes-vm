@@ -7,6 +7,7 @@ use App\Models\Client; // <-- Importamos el Modelo
 use App\Models\Payment;
 use App\Models\ExpensePayment;
 use Carbon\Carbon;
+use App\Models\ExtraIncome;
 
 class DashboardController extends Controller
 {
@@ -59,22 +60,33 @@ class DashboardController extends Controller
     // Combinar eventos: próximos pagos + pagos confirmados
     $calendarEvents = $calendarEvents->merge($paymentsEvents);
 
-    $totalIngresos = Payment::whereYear('payment_date', $today->year)
+    // Ingresos de pagos regulares
+    $totalIngresosPagos = Payment::whereYear('payment_date', $today->year)
                         ->whereMonth('payment_date', $today->month)
                         ->sum('amount');
 
-        $totalGastos = ExpensePayment::whereYear('payment_date', $today->year)
-                                     ->whereMonth('payment_date', $today->month)
-                                     ->sum('amount');
+    // Ingresos extras
+    $totalIngresosExtras = ExtraIncome::whereYear('income_date', $today->year)
+                        ->whereMonth('income_date', $today->month)
+                        ->sum('amount');
 
-        $totalGanancias = $totalIngresos - $totalGastos;
+    // Total de ingresos (pagos + extras)
+    $totalIngresos = $totalIngresosPagos + $totalIngresosExtras;
 
-        return view('home', [
-            'clients'        => $clients,
-            'calendarEvents' => $calendarEvents,
-            'totalIngresos'  => $totalIngresos,
-            'totalGastos'    => $totalGastos,
-            'totalGanancias' => $totalGanancias,
-        ]);
+    $totalGastos = ExpensePayment::whereYear('payment_date', $today->year)
+                                 ->whereMonth('payment_date', $today->month)
+                                 ->sum('amount');
+
+    $totalGanancias = $totalIngresos - $totalGastos;
+
+    return view('home', [
+        'clients'        => $clients,
+        'calendarEvents' => $calendarEvents,
+        'totalIngresos'  => $totalIngresos,
+        'totalIngresosPagos' => $totalIngresosPagos,
+        'totalIngresosExtras' => $totalIngresosExtras,
+        'totalGastos'    => $totalGastos,
+        'totalGanancias' => $totalGanancias,
+    ]);
 }
 }
