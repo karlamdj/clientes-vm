@@ -55,8 +55,8 @@
         <div data-i18n="Users">Usuarios</div>
       </a>
     </li>
-    <li class="menu-item">
-      <a href="javascript:void(0);" class="menu-link">
+    <li class="menu-item {{ request()->routeIs('reminders.*') ? 'active' : '' }}">
+      <a href="{{ route('reminders.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-bell"></i>
         <div data-i18n="Misc">Recordatorios</div>
       </a>

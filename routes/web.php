@@ -8,6 +8,7 @@ use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReminderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
           ->name('payments.confirm');
     
     Route::resource('users', UserController::class);
+    Route::resource('reminders', ReminderController::class);
 });
 
 // Authentication Routes
